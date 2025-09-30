@@ -1,0 +1,44 @@
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #fc3c0c;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.timeline-item {
+  padding: 20px 30px;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fc3c0c;
+}
+
+.timeline-item p {
+  margin-top: 0.5rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}

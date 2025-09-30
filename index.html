@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="assets/Favicon.png" type="image/png">
+    <style>
+    select::-ms-expand {
+      display: none;
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+    }
+
+    .form-input {
+      border: 1px solid #e5e7eb;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-input:focus {
+      border-color: #9ca3af;
+      box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.1);
+    }
+
+    .required-asterisk {
+      color: #ef4444;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .scrolling-wrapper {
+      animation: scroll 25s linear infinite;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeVidwan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Julee&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/timeline.css" >
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            julee: ["Julee", "cursive"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+
+
+
+<!-- NAVBAR -->
+  <section id="navbar" class="w-full sticky top-0 z-50 bg-white shadow">
+    <nav class="flex flex-wrap items-center justify-between py-5 px-[5vw] relative">
+      <!-- Logo -->
+      <div class="flex text-[clamp(2rem,4vw,3rem)] font-normal font-julee">
+        <h1><a href="#Home">Code</a></h1>
+        <h1 class="text-[#fc3c0c]"><a href="#Home">V</a></h1>
+        <h1><a href="#Home">idwan</a></h1>
+      </div>
+
+      <!-- Hamburger Icon (mobile only) -->
+      <div class="min-[640px]:hidden">
+        <button id="menu-toggle" class="text-3xl">&#9776;</button>
+      </div>
+
+      <!-- Menu (hidden on mobile, shown with toggle) -->
+      <div id="menu"
+        class="hidden bg-white text-lg flex-col gap-4 absolute top-full left-0 w-full bg-white px-[5vw] py-4 shadow min-[640px]:static min-[640px]:flex min-[640px]:flex-row min-[640px]:items-center min-[640px]:gap-10 min-[640px]:bg-transparent min-[640px]:shadow-none min-[640px]:w-auto">
+        <h4 style="padding: 0.5rem;"><a href="#Home" >Home</a></h4>
+        <h4 style="padding: 0.5rem;"><a href="#courses">Courses</a></h4>
+        <h4 style="padding: 0.5rem;"><a href="#getInTouch">Contact</a></h4>
+        <button class="border border-orange-400 text-[#fc3c0c] rounded-md px-4 py-1">LogIn</button>
+        <button class="bg-orange-400 text-white rounded-md px-4 py-1">SignUp</button>
+      </div>
+    </nav>
+  </section>
+
+
+
+<!-- HERO SECTION -->
+<section id="Home"
+  class="scroll-mt-32 flex flex-col-reverse min-[768px]:flex-row items-center justify-between px-[5vw] py-[5vh] min-h-[90vh]">
+
+  <!-- Left Text -->
+  <div class="w-full md:w-1/2 text-center md:text-left">
+    <div class="pt-2 md:-mt-24">
+      <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-tight">
+        <span class="text-[#fc3c0c]">Advance</span> Training fuels <br />
+        Organizational <br />
+        excellence.
+      </h1>
+      <p class="pt-4 text-[clamp(1rem,1.3vw,1.4rem)] text-gray-700">
+        Experience learning with our professionals and <br />
+        give the change for your organization.
+      </p>
+      <button onclick="openModal()" class="mt-6 bg-orange-400 hover:bg-yellow-500 text-white font-medium px-6 py-2 rounded-md text-lg">
+        Book a demo
+      </button>
+    </div>
+  </div>
+
+  <!-- Right Image -->
+  <div data-aos="fade-down-left" data-aos-duration="2000"
+    class="w-full min-[768px]:w-1/2 flex justify-center items-center mb-8 min-[768px]:mb-0">
+    <img src="assets/hero.webp" alt="Student with logos"
+      class="max-w-[90%] min-[768px]:max-w-[500px] h-auto object-contain" />
+  </div>
+</section>
+
+
+
+<!-- CARD SECTION -->
+    <section id="programs" class="scroll-mt-20 px-4 sm:px-8 lg:px-16 xl:px-20 py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto">
+        <!-- Section Heading -->
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">It's Code Vidwan!</h2>
+
+        <!-- Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          
+      <!-- Why Code Vidwan Card -->
+      <div class="bg-white border-2 border-orange-400 rounded-2xl shadow-md p-8 hover:scale-105 hover:shadow-xl transition-transform duration-300" data-aos="fade-right" data-aos-duration="1000">
+        <!-- Card Heading -->
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas fa-lightbulb text-orange-500 text-3xl"></i>
+          <div>
+            <h3 class="text-2xl font-bold text-orange-500">Why Code Vidwan?</h3>
+            <p class="text-gray-500 text-sm">Our Identity</p>
+          </div>
+        </div>
+        <!-- Card Subheading -->
+        <p class="text-gray-700 font-semibold text-base mb-4">
+          What Defines Us
+        </p>
+        <!-- Card Points -->
+        <ul class="space-y-2 text-gray-600">
+          <li class="flex items-start gap-2">
+            <span class="text-orange-500">➤</span> *Vidwan* means wisdom — we merge knowledge with technology.
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-orange-500">➤</span> Building not just coders, but thoughtful problem-solvers.
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-orange-500">➤</span> Focused on creativity, innovation, and practical impact.
+          </li>
+        </ul>
+      </div>
+
+      <!-- What We Stand For Card -->
+      <div class="bg-white border-2 border-orange-400 rounded-2xl shadow-md p-8 hover:scale-105 hover:shadow-xl transition-transform duration-300" data-aos="fade-right" data-aos-duration="2000">
+        <!-- Card Heading -->
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas fa-users text-orange-500 text-3xl"></i>
+          <div>
+            <h3 class="text-2xl font-bold text-orange-500">What We Stand For</h3>
+            <p class="text-gray-500 text-sm">Our Purpose</p>
+          </div>
+        </div>
+        <!-- Card Subheading -->
+        <p class="text-gray-700 font-semibold text-base mb-4">
+          Our Core Beliefs
+        </p>
+        <!-- Card Points -->
+        <ul class="space-y-2 text-gray-600">
+          <li class="flex items-start gap-2">
+            <span class="text-orange-500">➤</span> Skills matter more than certificates.
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-orange-500">➤</span> Learning through hands-on, real-world projects.
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-orange-500">➤</span> Mentorship from experienced industry professionals.
+          </li>
+        </ul>
+      </div>
+      <!-- Our Vision Card -->
+      <div class="bg-white border-2 border-orange-400 rounded-2xl shadow-md p-8 hover:scale-105 hover:shadow-xl transition-transform duration-300" data-aos="fade-right" data-aos-duration="3000">
+        <!-- Card Heading -->
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas fa-rocket text-orange-500 text-3xl"></i>
+          <div>
+            <h3 class="text-2xl font-bold text-orange-500">Our Vision</h3>
+            <p class="text-gray-500 text-sm">Future Ready</p>
+          </div>
+        </div>
+        <!-- Card Subheading -->
+        <p class="text-gray-700 font-semibold text-base mb-4">
+          Looking Ahead
+        </p>
+        <!-- Card Points -->
+        <ul class="space-y-2 text-gray-600">
+          <li class="flex items-start gap-2">
+            <span class="text-orange-500">➤</span> Innovation-driven, adaptable, and accessible solutions.
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-orange-500">➤</span> Student-centric and easy-to-use learning platforms.
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-orange-500">➤</span> Affordable tech education as a catalyst for growth.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+
+<!-- TIMELINE SECTION -->
+  <section id="timeline" class="my-10">
+    <h2 class="text-center text-3xl font-bold mb-10">Our Journey</h2>
+    <div class="timeline">
+      <div class="timeline-item" data-aos="fade-up">
+        <h3>2022</h3>
+        <p>Started with a vision to teach coding to beginners.</p>
+      </div>
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+        <h3>2023</h3>
+        <p>Expanded with AI/ML and Data Science courses.</p>
+      </div>
+      <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+        <h3>2024</h3>
+        <p>Launched CodeVidwan Juniors for school students.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- ACTIVITIES -->
+  <section id="activities" class="scroll-mt-20 px-4 sm:px-8 lg:px-16 xl:px-20 py-16 bg-gray-50">
+    <!-- Heading -->
+    <div class="text-center mb-8">
+      <h2 class="text-4xl font-bold text-orange-500">Learning Beyond the Classroom</h2>
+      <p class="text-gray-600 mt-2 text-lg">Workshops & Activities</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex justify-left mb-6 space-x-6 border-b-2 border-gray-200">
+      <button onclick="showTab('courses')" id="tab-courses" class="tab-btn px-4 py-2 text-gray-500 hover:text-orange-500 font-semibold">
+        Courses
+      </button>
+      <button onclick="showTab('workshops')" id="tab-workshops" class="tab-btn px-4 py-2 text-gray-500 hover:text-orange-500 font-semibold">
+        Workshops
+      </button>
+      <button onclick="showTab('co-curricular')" id="tab-co-curricular" class="tab-btn px-4 py-2 text-gray-500 hover:text-orange-500 font-semibold">
+        Co-Curricular
+      </button>
+    </div>
+
+    <!-- Content + Image -->
+    <div class="md:flex md:items-start md:gap-8">
+      <!-- Text Content -->
+      <div class="md:w-1/2 space-y-4">
+        <div id="courses-content">
+          <h3 class="text-2xl font-bold text-orange-500">Courses Offered</h3>
+          <p class="text-gray-700">Our programs are carefully designed to provide industry-relevant knowledge and practical skills, helping learners stay ahead in today’s competitive environment.</p>
+          <ul class="list-disc list-inside text-gray-600 space-y-1">
+            <li>Python Programming Fundamentals</li>
+            <li>Data Science & Analytics</li>
+            <li>Artificial Intelligence & Machine Learning</li>
+            <li>Full Stack Web Development</li>
+            <li>Cloud Computing & DevOps</li>
+            <li>Cybersecurity Essentials</li>
+          </ul>
+        </div>
+
+        <div id="workshops-content" class="hidden">
+          <h3 class="text-2xl font-bold text-orange-500">Workshops & Hands-on Sessions</h3>
+          <p class="text-gray-700">We conduct interactive workshops designed to give learners real-world exposure and practical skills.</p>
+          <ul class="list-disc list-inside text-gray-600 space-y-1">
+            <li>Python & Data Science Bootcamps</li>
+            <li>AI & Machine Learning Workshops</li>
+            <li>Industry Interaction & Career Guidance</li>
+            <li>Hackathons & Coding Challenges</li>
+          </ul>
+        </div>
+
+        <div id="co-curricular-content" class="hidden">
+          <h3 class="text-2xl font-bold text-orange-500">Co-Curricular Activities</h3>
+          <p class="text-gray-700">We encourage students to participate in activities that develop creativity, leadership, and teamwork.</p>
+          <ul class="list-disc list-inside text-gray-600 space-y-1">
+            <li>Tech Clubs & Innovation Labs</li>
+            <li>Coding Competitions & Hackathons</li>
+            <li>Community Initiatives & Volunteering</li>
+            <li>Cultural & Team-Building Events</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="md:w-1/2 mt-6 md:mt-0">
+        <img id="tab-image" src="assets/activities/courses.jpg" alt="Workshops Image" class="rounded-xl shadow-md">
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- FOOTER SECTION -->
+<footer class="w-full px-10 py-12 md:px-24 lg:px-40 bg-black text-white">
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+
+      <!-- Logo and Description -->
+      <div class="md:col-span-2">
+        <!-- Exact custom logo -->
+        <div class="flex items-center text-5xl font-semibold" style="font-family: 'Julee', cursive;">
+          <h1>Code</h1>
+          <h1 class="text-[#fc3c0c]">V</h1>
+          <h1>idwan</h1>
+        </div>
+
+        <!-- Description -->
+        <p class="mt-4 text-sm text-gray-300 leading-relaxed">
+          Our specialized training solutions are designed <br>
+          to align with organizational goals, providing flexible <br>
+          and scalable programs that strengthen workforce expertise, <br>
+          improve operational efficiency, and support sustainable growth.
+        </p>
+
+        <!-- Social Icons -->
+        <div class="flex gap-4 mt-6">
+          <a href="https://www.instagram.com/linqway_techniks/" class="w-8 h-8 rounded-full border border-white flex items-center justify-center hover:scale-110 transition">
+            <i class="fab fa-instagram text-green-500"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/linqway-techniks-33444a366/" class="w-8 h-8 rounded-full border border-white flex items-center justify-center hover:scale-110 transition">
+            <i class="fab fa-linkedin-in text-green-500"></i>
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">QUICK LINKS</h3>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="#" class="hover:text-white">About</a></li>
+          <li><a href="#" class="hover:text-white">Why choose us</a></li>
+          <li><a href="#courses" class="hover:text-white">Popular courses</a></li>
+          <li><a href="#" class="hover:text-white">Our Team</a></li>
+          <li><a href="#getInTouch" class="hover:text-white">Contact</a></li>
+
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="relative">
+        <h3 class="text-lg font-semibold mb-4">LEGAL</h3>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+        </ul>
+        <!-- Vertical Divider -->
+        <div class="hidden md:block absolute right-0 top-0 h-full border-r border-gray-500"></div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="pl-6">
+        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+        <ul class="space-y-4 text-sm text-gray-300">
+          <li class="flex items-center gap-3">
+            <i class="fas fa-phone text-green-500 text-lg"></i>
+            <span>+917338113858</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fas fa-envelope text-green-500 text-lg"></i>
+            <span>enquire@codevidwan.com</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt text-green-500 text-lg mt-1"></i>
+            <span>1054, Sarvajanika Hostel Road, Vidyaranyapuram,<br> Mysuru-570008</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+      &copy; 2025 CodeVidwan. All rights reserved.<br> 
+      <a href="https://linqway.com" target="_blank" class="text-blue-500 hover:underline">
+        Linqway Tecknics Pvt Ltd
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="script.js"></script>  
+</body>
+</html>
