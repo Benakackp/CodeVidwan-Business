@@ -44,7 +44,7 @@ function showTab(tab) {
 
   // Image switch
   const img = document.getElementById('tab-image');
-  if (tab === 'courses') img.src = 'assets/activities/courses.jpg';
+  if (tab === 'courses') img.src = 'assets/activities/courses.png';
   else if (tab === 'workshops') img.src = 'assets/activities/workshop.png';
   else if (tab === 'co-curricular') img.src = 'assets/activities/co-curricular.jpg';
   
